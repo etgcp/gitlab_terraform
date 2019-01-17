@@ -75,7 +75,7 @@ resource "google_compute_instance" "gitlab-ce" {
         image = "${var.image}"
     }
 
-    disk {
+    boot_disk {
         disk = "${var.data_volume}"
         auto_delete = "false"
         device_name = "gitlab_data"
