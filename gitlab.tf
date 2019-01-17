@@ -77,12 +77,9 @@ resource "google_compute_instance" "gitlab-ce" {
           }
     }
 
-    boot_disk {
-        auto_delete = "false"
-        initialize_params {
-            disk = "${var.data_volume}"            
-            device_name = "gitlab_data"
-            }
+    attached_disk {
+        disk = "${var.data_volume}"            
+        device_name = "gitlab_data"
     }
 
     network_interface {
