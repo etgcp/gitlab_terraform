@@ -71,7 +71,7 @@ resource "google_compute_instance" "gitlab-ce" {
         private_key = "${file("${var.ssh_key}")}"
     }
 
-    disk {
+    boot_disk {
         image = "${var.image}"
     }
 
