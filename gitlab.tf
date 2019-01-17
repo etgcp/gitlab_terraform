@@ -77,10 +77,12 @@ resource "google_compute_instance" "gitlab-ce" {
           }
     }
 
-    scratch_disk {
-        disk = "${var.data_volume}"
-        auto_delete = "false"
-        device_name = "gitlab_data"
+    disk {
+        initialize_params {
+            disk = "${var.data_volume}"
+            auto_delete = "false"
+            device_name = "gitlab_data"
+            }
     }
 
     network_interface {
