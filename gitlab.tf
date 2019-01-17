@@ -78,7 +78,7 @@ resource "google_compute_instance" "gitlab-ce" {
     }
 
     attached_disk {
-        disk = "${var.data_volume}"            
+        source = "${var.data_volume}"            
         device_name = "gitlab_data"
     }
 
