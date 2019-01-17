@@ -35,8 +35,10 @@ resource "google_compute_instance" "gitlab-ci-runner" {
     }
 
     boot_disk {
-        image = "${var.image}"
-        size = "${var.runner_disk_size}"
+        initialize_params {
+            image = "${var.image}"
+            size = "${var.runner_disk_size}"
+        }
     }
 
     provisioner "file" {
