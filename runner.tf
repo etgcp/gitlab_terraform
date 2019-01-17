@@ -34,7 +34,7 @@ resource "google_compute_instance" "gitlab-ci-runner" {
         private_key = "${file("${var.ssh_key}")}"
     }
 
-    disk {
+    boot_disk {
         image = "${var.image}"
         size = "${var.runner_disk_size}"
     }
