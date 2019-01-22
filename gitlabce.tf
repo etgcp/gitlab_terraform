@@ -37,8 +37,8 @@ resource "google_compute_instance" "gitlab-ce" {
 
     service_account {
         #email = "myserviceaccount@myproject.iam.gserviceaccount.com"
-        email = "google_service_account.gitlabaccount.email"
-        scopes = []
+        email = "${google_service_account.gitlabaccount.email}"
+        scopes = ["userinfo-email", "compute-ro", "storage-ro"]
     }
 
     provisioner "file" {
