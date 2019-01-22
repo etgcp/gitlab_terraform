@@ -1,5 +1,5 @@
 resource "google_service_account" "gitlabaccount" {
-  account_id   = "gitlabsa"
+  account_id   = "gitlabtestsa"
   display_name = "Gitlab Service Account"
 }
 
