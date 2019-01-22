@@ -1,4 +1,8 @@
-# provider google in gitlab.tf
+resource "google_service_account" "gitlab-ci-runner" {
+    account_id   = "gitlab-ci-runner"
+    display_name = "gitlab-ci-runner"
+}
+
 # resource google_compute_network gitlab_network in gitlab.tf
 data "template_file" "runner_host" {
     template = "$${runner_host == "GENERATE" ? generated_host : runner_host}"
@@ -60,6 +64,12 @@ resource "google_compute_instance" "gitlab-ci-runner" {
       ]
 
     }
+
+    service_account {
+      email = "${google_service_account.gitlab-ci-runner.email}"
+      scopes = ["cloud-platform"]
+    }
+
 }
 
 output "runner_disk_size" {
