@@ -35,9 +35,7 @@ resource "google_compute_instance" "gitlab-ce" {
         sshKeys = "ubuntu:${file("${var.ssh_key}.pub")}"
     }
 
-    service_account {
-        #email = "myserviceaccount@myproject.iam.gserviceaccount.com"
-        email = "${google_service_account.gitlabaccount.email}"
+    service_account {       
         scopes = ["userinfo-email", "compute-ro", "storage-ro"]
     }
 
