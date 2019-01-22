@@ -27,11 +27,11 @@ resource "google_compute_firewall" "external_ports_ssl" {
 #     }
 # }
 
-resource "google_compute_address" "external_ip" {
-    count = "${var.deploy_gitlab ? 1 : 0}"
-    name = "${var.prefix}gitlab-external-address"
-    region = "${var.region}"
-}
+# resource "google_compute_address" "external_ip" {
+#     count = "${var.deploy_gitlab ? 1 : 0}"
+#     name = "${var.prefix}gitlab-external-address"
+#     region = "${var.region}"
+# }
 
 
 
