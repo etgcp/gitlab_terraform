@@ -6,10 +6,10 @@
      value =  "${google_service_account.gitlabaccount.email}"
  }
 
- output "initial_root_password" {
-     value = "${data.template_file.gitlab.vars.initial_root_password}"
- }
+# output "initial_root_password" {
+#     value = "${data.template_file.gitlab.vars.initial_root_password}"
+# }
 
- output "runner_token" {
-     value = "${data.template_file.gitlab.vars.runner_token}"
- }
+# output "runner_token" {
+#     value = "${data.template_file.gitlab.vars.runner_token}"
+# }
