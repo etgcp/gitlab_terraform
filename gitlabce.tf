@@ -1,3 +1,8 @@
+resource "google_service_account" "gitlab-ce" {
+    account_id   = "gitlab-ce"
+    display_name = "gitlab-ce"
+}
+
 resource "google_compute_instance" "gitlab-ce" {
     count = "${var.deploy_gitlab ? 1 : 0}"
     name = "${var.prefix}${var.instance_name}"
@@ -36,7 +41,8 @@ resource "google_compute_instance" "gitlab-ce" {
     }
 
     service_account {       
-        scopes = ["userinfo-email", "compute-ro", "storage-ro"]
+        email = "${google_service_account.gitlab-ce.email}"
+        scopes = ["cloud-platform"]
     }
 
     provisioner "file" {
